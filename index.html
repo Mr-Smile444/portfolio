@@ -1,0 +1,1437 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Zaid - Web Developer & Designer</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/ScrollTrigger.min.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background: #ECF0F1;
+            color: #2C3E50;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        a {
+            text-decoration: none;
+            color: #ECF0F1;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 40px;
+        }
+
+        /* Header */
+        header {
+            background: #2C3E50;
+            color: #ECF0F1;
+            position: fixed;
+            width: 100%;
+            z-index: 1000;
+            padding: 20px 0;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 28px;
+            font-weight: 700;
+            color: #ECF0F1;
+        }
+
+        .logo span {
+            color: #3498DB;
+        }
+
+        .nav-links {
+            display: flex;
+        }
+
+        .nav-links li {
+            margin-left: 30px;
+        }
+
+        .nav-links a {
+            font-size: 18px;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: #3498DB;
+        }
+
+        .menu-btn {
+            display: none;
+            font-size: 24px;
+            cursor: pointer;
+        }
+
+        /* Sections */
+        section {
+            padding: 100px 0;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 60px;
+            position: relative;
+        }
+
+        .section-title h2 {
+            font-size: 36px;
+            font-weight: 700;
+            color: #2C3E50;
+            text-transform: uppercase;
+            margin-bottom: 15px;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: #3498DB;
+        }
+
+        /* Home Section */
+        #home {
+            height: 100vh;
+            background: linear-gradient(to right, #2C3E50, #34495E);
+            color: #ECF0F1;
+            display: flex;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .home-content {
+            max-width: 800px;
+            z-index: 1;
+        }
+
+        .home-content h1 {
+            font-size: 60px;
+            font-weight: 700;
+            margin-bottom: 20px;
+            line-height: 1.2;
+        }
+
+        .home-content h1 span {
+            color: #3498DB;
+        }
+
+        .home-content p {
+            font-size: 20px;
+            margin-bottom: 30px;
+        }
+
+        .home-content .typing-text {
+            color: #3498DB;
+            font-weight: 600;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 14px 30px;
+            background: #3498DB;
+            color: #ECF0F1;
+            border-radius: 30px;
+            font-size: 18px;
+            font-weight: 500;
+            transition: all 0.3s;
+            border: 2px solid transparent;
+        }
+
+        .btn:hover {
+            background: transparent;
+            border-color: #3498DB;
+            color: #3498DB;
+            transform: translateY(-5px);
+        }
+
+        .social-icons {
+            margin-top: 30px;
+        }
+
+        .social-icons a {
+            display: inline-block;
+            width: 40px;
+            height: 40px;
+            background: #3498DB;
+            color: #ECF0F1;
+            border-radius: 50%;
+            text-align: center;
+            line-height: 40px;
+            margin-right: 15px;
+            transition: all 0.3s;
+        }
+
+        .social-icons a:hover {
+            transform: translateY(-5px);
+            background: #ECF0F1;
+            color: #3498DB;
+        }
+
+        /* About Section */
+        #about {
+            background: #ECF0F1;
+        }
+
+        .about-content {
+            display: flex;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .about-img {
+            flex: 1;
+            text-align: center;
+            min-width: 300px;
+        }
+
+        .about-img img {
+            width: 300px;
+            height: 300px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 5px solid #3498DB;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .about-text {
+            flex: 2;
+            padding-left: 50px;
+            min-width: 300px;
+        }
+
+        .about-text h3 {
+            font-size: 30px;
+            margin-bottom: 20px;
+            color: #2C3E50;
+        }
+
+        .about-text p {
+            font-size: 18px;
+            margin-bottom: 15px;
+            color: #34495E;
+        }
+
+        .info {
+            margin: 20px 0;
+        }
+
+        .info-item {
+            margin-bottom: 10px;
+            font-size: 18px;
+        }
+
+        .info-item span {
+            font-weight: 600;
+            color: #2C3E50;
+            margin-right: 10px;
+        }
+
+        /* Skills Section */
+        #skills {
+            background: #BDC3C7;
+        }
+
+        .skills-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .skill-item {
+            background: #ECF0F1;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s;
+        }
+
+        .skill-item:hover {
+            transform: translateY(-10px);
+        }
+
+        .skill-item h3 {
+            font-size: 24px;
+            margin-bottom: 20px;
+            color: #2C3E50;
+        }
+
+        .skill-bar {
+            height: 20px;
+            background: #D6DBDF;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        .skill-progress {
+            height: 100%;
+            background: #3498DB;
+            border-radius: 10px;
+            position: relative;
+            width: 0;
+            transition: width 1.5s ease-in-out;
+        }
+
+        .skill-progress span {
+            position: absolute;
+            right: 10px;
+            top: 0;
+            color: #ECF0F1;
+            font-weight: 600;
+        }
+
+        /* Services Section */
+        #services {
+            background: #ECF0F1;
+        }
+
+        .services-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .service-item {
+            background: #BDC3C7;
+            padding: 30px;
+            border-radius: 10px;
+            text-align: center;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s;
+        }
+
+        .service-item:hover {
+            transform: translateY(-10px);
+            background: #34495E;
+            color: #ECF0F1;
+        }
+
+        .service-item i {
+            font-size: 50px;
+            color: #3498DB;
+            margin-bottom: 20px;
+        }
+
+        .service-item h3 {
+            font-size: 24px;
+            margin-bottom: 15px;
+        }
+
+        /* Education Section */
+        #education {
+            background: #BDC3C7;
+        }
+
+        .timeline {
+            position: relative;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .timeline::after {
+            content: '';
+            position: absolute;
+            width: 6px;
+            background: #3498DB;
+            top: 0;
+            bottom: 0;
+            left: 50%;
+            margin-left: -3px;
+        }
+
+        .timeline-item {
+            padding: 10px 40px;
+            position: relative;
+            width: 50%;
+            box-sizing: border-box;
+        }
+
+        .timeline-item:nth-child(odd) {
+            left: 0;
+        }
+
+        .timeline-item:nth-child(even) {
+            left: 50%;
+        }
+
+        .timeline-content {
+            padding: 20px;
+            background: #ECF0F1;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .timeline-content h3 {
+            color: #3498DB;
+            margin-bottom: 10px;
+        }
+
+        .timeline-content h4 {
+            color: #2C3E50;
+            margin-bottom: 10px;
+        }
+
+        .timeline-content p {
+            color: #7F8C8D;
+        }
+
+        .timeline-item::after {
+            content: '';
+            position: absolute;
+            width: 25px;
+            height: 25px;
+            background: #3498DB;
+            border: 4px solid #ECF0F1;
+            border-radius: 50%;
+            top: 20px;
+            z-index: 1;
+        }
+
+        .timeline-item:nth-child(odd)::after {
+            right: -13px;
+        }
+
+        .timeline-item:nth-child(even)::after {
+            left: -13px;
+        }
+
+        /* Contact Section */
+        #contact {
+            background: #34495E;
+            color: #ECF0F1;
+        }
+
+        .contact-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+        }
+
+        .contact-info {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .contact-info-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .contact-info-item i {
+            font-size: 24px;
+            color: #3498DB;
+            margin-right: 15px;
+        }
+
+        .contact-info-item div {
+            font-size: 18px;
+        }
+
+        .contact-form {
+            background: #2C3E50;
+            padding: 30px;
+            border-radius: 10px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 15px;
+            border: none;
+            border-radius: 5px;
+            background: #ECF0F1;
+            color: #2C3E50;
+            font-size: 16px;
+        }
+
+        textarea.form-control {
+            min-height: 150px;
+            resize: vertical;
+        }
+
+        .submit-btn {
+            background: #3498DB;
+            color: #ECF0F1;
+            padding: 15px 30px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 18px;
+            transition: all 0.3s;
+        }
+
+        .submit-btn:hover {
+            background: #2980B9;
+            transform: translateY(-5px);
+        }
+
+        /* Footer */
+        footer {
+            background: #2C3E50;
+            color: #ECF0F1;
+            text-align: center;
+            padding: 30px 0;
+        }
+
+        .footer-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .footer-content p {
+            margin: 10px 0;
+        }
+
+        /* Responsive */
+        @media (max-width: 992px) {
+            .home-content h1 {
+                font-size: 48px;
+            }
+            
+            .about-content {
+                flex-direction: column;
+            }
+            
+            .about-text {
+                padding-left: 0;
+                margin-top: 40px;
+            }
+            
+            .timeline::after {
+                left: 31px;
+            }
+            
+            .timeline-item {
+                width: 100%;
+                padding-left: 70px;
+                padding-right: 25px;
+            }
+            
+            .timeline-item:nth-child(even) {
+                left: 0;
+            }
+            
+            .timeline-item::after {
+                left: 18px;
+            }
+            
+            .timeline-item:nth-child(odd)::after {
+                right: auto;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .menu-btn {
+                display: block;
+            }
+            
+            .nav-links {
+                position: fixed;
+                top: 80px;
+                left: -100%;
+                width: 100%;
+                height: calc(100vh - 80px);
+                background: #2C3E50;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                transition: all 0.5s;
+            }
+            
+            .nav-links.active {
+                left: 0;
+            }
+            
+            .nav-links li {
+                margin: 20px 0;
+            }
+            
+            .home-content h1 {
+                font-size: 36px;
+            }
+            
+            .home-content p {
+                font-size: 18px;
+            }
+            
+            .section-title h2 {
+                font-size: 30px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <nav>
+                <div class="logo">Z<span>aid</span></div>
+                <ul class="nav-links">
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#skills">Skills</a></li>
+                    <li><a href="#services">Services</a></li>
+                    <li><a href="#education">Education</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+                <div class="menu-btn">
+                    <i class="fas fa-bars"></i>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Home Section -->
+    <section id="home">
+        <div class="container">
+            <div class="home-content">
+                <h1>Hi, I'm <span>Zaid</span></h1>
+                <p>I'm a <span class="typing-text">Web Developer</span></p>
+                <p>I create beautiful and functional websites with modern design and smooth animations.</p>
+                <a href="#contact" class="btn">Hire Me</a>
+                <div class="social-icons">
+                    <a href="https://wa.me/9203275039387"><i class="fa-brands fa-whatsapp"></i></a>
+                    <a href="https://www.tiktok.com/@achabacha444"><i class="fa-brands fa-tiktok"></i></a>
+                    <a href="https://www.instagram.com/acha_bacha444"><i class="fab fa-instagram"></i></a>
+
+                    <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="#"><i class="fab fa-github"></i></a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about">
+        <div class="container">
+            <div class="section-title">
+                <h2>About Me</h2>
+            </div>
+            <div class="about-content">
+                <div class="about-img">
+                    <img src="image/zaid profile pic.jpg" alt="Zaid">
+                </div>
+                <div class="about-text">
+                    <h3>Web Developer & Designer</h3>
+                    <p>I'm a passionate web developer and designer with over 1.5 years of experience creating modern, responsive websites and web applications. I specialize in front-end development with a focus on user experience and clean code.</p>
+                    <div class="info">
+                        <div class="info-item">
+                            <span>Age:</span>
+                            19
+                        </div>
+                        <div class="info-item">
+                            <span>Email:</span>
+                            zaidcontact52@gmail.com
+                        </div>
+                        <div class="info-item">
+                            <span>Freelance:</span>
+                            Available
+                        </div>
+                        <div class="info-item">
+                            <span>Location:</span>
+                            Yazman
+                        </div>
+                    </div>
+                    <a href="image/Resume.pdf" class="btn">Download CV</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills">
+        <div class="container">
+            <div class="section-title">
+                <h2>My Skills</h2>
+            </div>
+            <div class="skills-content">
+                <div class="skill-item">
+                    <h3>HTML</h3>
+                    <div class="skill-bar">
+                        <div class="skill-progress" data-width="95%">
+                            <span>95%</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="skill-item">
+                    <h3>CSS</h3>
+                    <div class="skill-bar">
+                        <div class="skill-progress" data-width="90%">
+                            <span>90%</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="skill-item">
+                    <h3>JavaScript</h3>
+                    <div class="skill-bar">
+                        <div class="skill-progress" data-width="85%">
+                            <span>85%</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="skill-item">
+                    <h3>java</h3>
+                    <div class="skill-bar">
+                        <div class="skill-progress" data-width="80%">
+                            <span>80%</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="skill-item">
+                    <h3>UI/UX Design</h3>
+                    <div class="skill-bar">
+                        <div class="skill-progress" data-width="75%">
+                            <span>75%</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="skill-item">
+                    <h3>Node.js</h3>
+                    <div class="skill-bar">
+                        <div class="skill-progress" data-width="70%">
+                            <span>70%</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services">
+        <div class="container">
+            <div class="section-title">
+                <h2>My Services</h2>
+            </div>
+            <div class="services-content">
+                <div class="service-item">
+                    <i class="fas fa-code"></i>
+                    <h3>Web Development</h3>
+                    <p>Building responsive and dynamic websites using modern technologies and frameworks.</p>
+                </div>
+                <div class="service-item">
+                    <i class="fas fa-paint-brush"></i>
+                    <h3>Web Design</h3>
+                    <p>Creating beautiful and intuitive user interfaces with a focus on user experience.</p>
+                </div>
+                <div class="service-item">
+                    <i class="fas fa-mobile-alt"></i>
+                    <h3>Responsive Design</h3>
+                    <p>Ensuring websites look great and function well on all devices and screen sizes.</p>
+                </div>
+                <div class="service-item">
+                    <i class="fas fa-search"></i>
+                    <h3>DSA java</h3>
+                    <p>On this time ,I learn Data Satructure and Algorithams in Java</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Education Section -->
+    <section id="education">
+        <div class="container">
+            <div class="section-title">
+                <h2>Education</h2>
+            </div>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <h3>2020 - 2022</h3>
+                        <h4>Secondary Education</h4>
+                        <p>Punjab College Yazman</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <h3>2016 - 2020</h3>
+                        <h4>Matric</h4>
+                        <p>Governmenr High School 106-DB</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <h3>2014 - 2016</h3>
+                        <h4>Middle School</h4>
+                        <p>GES 107-DB</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <h3>2013 - 2014</h3>
+                        <h4>Playing games</h4>
+                        <p></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section id="projects">
+    <div class="container">
+        <div class="section-title">
+            <h2>My Projects</h2>
+        </div>
+        <div class="projects-content">
+            <div class="project-item">
+                <div class="project-img">
+                    <img src="image/car1.jpeg" alt="E-Commerce Website">
+                    <div class="project-overlay">
+                        <div class="project-links">
+                            <a href="https://miniproject-ten-wheat.vercel.app/"><i class="fas fa-link"></i></a>
+                            <a href="#"><i class="fab fa-github"></i></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="project-info">
+                    <h3>E-Commerce Store</h3>
+                    <p>Full-featured online shopping platform with cart, payments, and admin dashboard.</p>
+                    <div class="project-tech">
+                        <span>React</span>
+                        <span>Node.js</span>
+                        <span>MongoDB</span>
+                    </div>
+                </div>
+            </div>
+            <div class="project-item">
+                <div class="project-img">
+                    <img src="image/love.jpeg" alt="Weather App">
+                    <div class="project-overlay">
+                        <div class="project-links">
+                            <a href="https://loveweb1.vercel.app/"><i class="fas fa-link"></i></a>
+                            <a href="#"><i class="fab fa-github"></i></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="project-info">
+                    <h3>love web</h3>
+                    <p>Love Counter: A simple website that allows couples to keep track of how long they have been in a relationship..</p>
+                    <div class="project-tech">
+                        <span>JavaScript</span>
+                        <span>API</span>
+                        <span>CSS3</span>
+                    </div>
+                </div>
+            </div>
+            <div class="project-item">
+                <div class="project-img">
+                    <img src="love.jpeg" alt="Task Management App">
+                    <div class="project-overlay">
+                        <div class="project-links">
+                            <a href="#"><i class="fas fa-link"></i></a>
+                            <a href="#"><i class="fab fa-github"></i></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="project-info">
+                    <h3>Task Manager Pro</h3>
+                    <p>Productivity app with drag-drop interface and cloud sync.</p>
+                    <div class="project-tech">
+                        <span>Vue.js</span>
+                        <span>Firebase</span>
+                        <span>SCSS</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<style>
+    /* Projects Section */
+    #projects {
+        background: #ECF0F1;
+        padding: 80px 0;
+    }
+    
+    .projects-content {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 25px;
+        max-width: 1000px;
+        margin: 0 auto;
+    }
+    
+    .project-item {
+        background: #fff;
+        border-radius: 15px;
+        overflow: hidden;
+        box-shadow: 0 5px 25px rgba(0, 0, 0, 0.1);
+        transition: all 0.3s ease;
+        transform: translateY(0);
+    }
+    
+    .project-item:hover {
+        transform: translateY(-8px);
+        box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
+    }
+    
+    .project-img {
+        position: relative;
+        height: 200px;
+        overflow: hidden;
+    }
+    
+    .project-img img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: transform 0.5s ease;
+    }
+    
+    .project-item:hover .project-img img {
+        transform: scale(1.05);
+    }
+    
+    .project-overlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(45deg, rgba(52, 152, 219, 0.9), rgba(41, 128, 185, 0.9));
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        opacity: 0;
+        transition: opacity 0.3s ease;
+    }
+    
+    .project-item:hover .project-overlay {
+        opacity: 1;
+    }
+    
+    .project-links a {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 45px;
+        height: 45px;
+        background: #fff;
+        color: #3498DB;
+        border-radius: 50%;
+        margin: 0 8px;
+        transition: all 0.3s ease;
+        transform: translateY(20px);
+    }
+    
+    .project-item:hover .project-links a {
+        transform: translateY(0);
+    }
+    
+    .project-links a:hover {
+        background: #2C3E50;
+        color: #ECF0F1;
+        transform: translateY(-3px) !important;
+    }
+    
+    .project-info {
+        padding: 20px;
+    }
+    
+    .project-info h3 {
+        font-size: 18px;
+        margin-bottom: 10px;
+        color: #2C3E50;
+        font-weight: 600;
+    }
+    
+    .project-info p {
+        color: #7F8C8D;
+        margin-bottom: 15px;
+        font-size: 14px;
+        line-height: 1.5;
+    }
+    
+    .project-tech {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+    }
+    
+    .project-tech span {
+        padding: 4px 12px;
+        background: #3498DB;
+        color: #ECF0F1;
+        border-radius: 15px;
+        font-size: 12px;
+        font-weight: 500;
+        transition: all 0.3s ease;
+    }
+    
+    .project-tech span:hover {
+        background: #2980B9;
+        transform: translateY(-2px);
+    }
+    
+    /* Responsive adjustments */
+    @media (max-width: 768px) {
+        .projects-content {
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
+        
+        .project-img {
+            height: 180px;
+        }
+        
+        .project-info {
+            padding: 15px;
+        }
+        
+        .project-info h3 {
+            font-size: 16px;
+        }
+        
+        .project-info p {
+            font-size: 13px;
+        }
+    }
+</style>
+
+<script>
+    // Enhanced GSAP animation for projects section
+    document.addEventListener('DOMContentLoaded', function() {
+        // Animate project items on scroll with side-to-front movement
+        gsap.utils.toArray('.project-item').forEach((item, index) => {
+            const direction = index % 2 === 0 ? -100 : 100;
+            const rotation = index % 2 === 0 ? 10 : -10;
+            
+            gsap.fromTo(item, 
+                {
+                    x: direction,
+                    rotationY: rotation,
+                    opacity: 0
+                },
+                {
+                    x: 0,
+                    rotationY: 0,
+                    opacity: 1,
+                    duration: 0.8,
+                    delay: index * 0.1,
+                    scrollTrigger: {
+                        trigger: item,
+                        start: 'top 85%',
+                        toggleActions: 'play none none none'
+                    },
+                    ease: 'power2.out'
+                }
+            );
+        });
+    });
+</script>
+
+    
+   <!-- Contact Section -->
+<section id="contact">
+    <div class="container">
+        <div class="section-title">
+            <h2>Contact Me</h2>
+        </div>
+        <div class="contact-content">
+            <div class="contact-info">
+                <div class="contact-info-item">
+                    <i class="fas fa-phone"></i>
+                    <div>
+                        <h4>Phone</h4>
+                        <p>0327-5039387</p>
+                    </div>
+                </div>
+                <div class="contact-info-item">
+                    <i class="fas fa-envelope"></i>
+                    <div>
+                        <h4>Email</h4>
+                        <p>zaidcontact52@gmail.com</p>
+                    </div>
+                </div>
+                <div class="contact-info-item">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <div>
+                        <h4>Location</h4>
+                        <p>107-DB ,Yazman</p>
+                    </div>
+                </div>
+            </div>
+            <div class="contact-form">
+                <form id="contactForm">
+                    <div class="form-group">
+                        <input type="text" class="form-control" id="contactName" name="name" placeholder="Your Name" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="email" class="form-control" id="contactEmail" name="email" placeholder="Your Email" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="text" class="form-control" id="contactSubject" name="subject" placeholder="Subject" required>
+                    </div>
+                    <div class="form-group">
+                        <textarea class="form-control" id="contactMessage" name="message" placeholder="Your Message" required></textarea>
+                    </div>
+                    <button type="submit" class="submit-btn">Send Message</button>
+                </form>
+                <div id="formMessage" style="display: none; margin-top: 20px; padding: 15px; border-radius: 5px; text-align: center;"></div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<script>
+    // Contact form handling
+    document.addEventListener('DOMContentLoaded', function() {
+        const contactForm = document.getElementById('contactForm');
+        const formMessage = document.getElementById('formMessage');
+        
+        if (contactForm) {
+            contactForm.addEventListener('submit', async function(e) {
+                e.preventDefault();
+                
+                const formData = new FormData(this);
+                const submitBtn = this.querySelector('.submit-btn');
+                const originalText = submitBtn.textContent;
+                
+                // Hide previous messages
+                formMessage.style.display = 'none';
+                
+                try {
+                    submitBtn.textContent = 'Sending...';
+                    submitBtn.disabled = true;
+                    
+                    const response = await fetch('/contact', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/x-www-form-urlencoded',
+                        },
+                        body: new URLSearchParams(formData)
+                    });
+                    
+                    const result = await response.json();
+                    
+                    // Show message
+                    formMessage.textContent = result.message;
+                    formMessage.style.backgroundColor = result.success ? '#4CAF50' : '#F44336';
+                    formMessage.style.color = 'white';
+                    formMessage.style.display = 'block';
+                    
+                    if (result.success) {
+                        this.reset();
+                    }
+                } catch (error) {
+                    formMessage.textContent = 'Network error. Please check your connection.';
+                    formMessage.style.backgroundColor = '#F44336';
+                    formMessage.style.color = 'white';
+                    formMessage.style.display = 'block';
+                    console.error('Error:', error);
+                } finally {
+                    submitBtn.textContent = originalText;
+                    submitBtn.disabled = false;
+                }
+            });
+        }
+    });
+</script>
+
+<script>
+    document.getElementById('contactForm').addEventListener('submit', async function(e) {
+        e.preventDefault();
+        
+        const formData = new FormData(this);
+        const submitBtn = this.querySelector('.submit-btn');
+        const messageDiv = document.getElementById('formMessage');
+        const originalText = submitBtn.textContent;
+        
+        // Hide previous messages
+        messageDiv.style.display = 'none';
+        
+        try {
+            submitBtn.textContent = 'Sending...';
+            submitBtn.disabled = true;
+            
+            const response = await fetch('/contact', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded',
+                },
+                body: new URLSearchParams(formData)
+            });
+            
+            const result = await response.json();
+            
+            // Show message
+            messageDiv.textContent = result.message;
+            messageDiv.style.backgroundColor = result.success ? '#4CAF50' : '#F44336';
+            messageDiv.style.color = 'white';
+            messageDiv.style.display = 'block';
+            
+            if (result.success) {
+                this.reset();
+            }
+        } catch (error) {
+            messageDiv.textContent = 'Network error. Please check your connection.';
+            messageDiv.style.backgroundColor = '#F44336';
+            messageDiv.style.color = 'white';
+            messageDiv.style.display = 'block';
+        } finally {
+            submitBtn.textContent = originalText;
+            submitBtn.disabled = false;
+        }
+    });
+</script>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <p>&copy; 2025 Zaid. All Rights Reserved.</p>
+                <p>Designed with ❤️ by Zaid</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+    // Clean GSAP Animations without conflicts
+    document.addEventListener('DOMContentLoaded', function() {
+        // Initialize GSAP with ScrollTrigger
+        gsap.registerPlugin(ScrollTrigger);
+        
+        // Home section animation
+        gsap.from('.home-content', {
+            duration: 1.5,
+            y: 100,
+            opacity: 0,
+            ease: 'power3.out'
+        });
+        
+        // Typing animation
+        const texts = ['Web Developer', 'Designer', 'Freelancer'];
+        let count = 0;
+        let index = 0;
+        let currentText = '';
+        let letter = '';
+        
+        function type() {
+            if (count === texts.length) {
+                count = 0;
+            }
+            currentText = texts[count];
+            letter = currentText.slice(0, ++index);
+            
+            document.querySelector('.typing-text').textContent = letter;
+            if (letter.length === currentText.length) {
+                count++;
+                index = 0;
+                setTimeout(type, 2000);
+            } else {
+                setTimeout(type, 150);
+            }
+        }
+        
+        type();
+        
+        // Animate skills bars on scroll
+        gsap.utils.toArray('.skill-progress').forEach(bar => {
+            gsap.to(bar, {
+                width: bar.getAttribute('data-width'),
+                scrollTrigger: {
+                    trigger: bar,
+                    start: 'top 80%',
+                    end: 'bottom 20%',
+                    scrub: true
+                }
+            });
+        });
+        
+        // Side to front animations for specific sections
+        
+        // Skills section animation - items slide in from left
+        gsap.utils.toArray('#skills .skill-item').forEach((item, i) => {
+            gsap.fromTo(item, 
+                {
+                    x: -100,
+                    opacity: 0
+                },
+                {
+                    x: 0,
+                    opacity: 1,
+                    duration: 0.8,
+                    delay: i * 0.2,
+                    scrollTrigger: {
+                        trigger: item,
+                        start: 'top 85%',
+                        toggleActions: 'play none none none'
+                    }
+                }
+            );
+        });
+        
+        // Services section animation - items slide in from right
+        gsap.utils.toArray('#services .service-item').forEach((item, i) => {
+            gsap.fromTo(item, 
+                {
+                    x: 100,
+                    opacity: 0
+                },
+                {
+                    x: 0,
+                    opacity: 1,
+                    duration: 0.8,
+                    delay: i * 0.2,
+                    scrollTrigger: {
+                        trigger: item,
+                        start: 'top 85%',
+                        toggleActions: 'play none none none'
+                    }
+                }
+            );
+        });
+        
+        // Education section animation - timeline items alternate sides
+        gsap.utils.toArray('#education .timeline-item').forEach((item, i) => {
+            // Alternate starting position (odd from left, even from right)
+            const startX = i % 2 === 0 ? -100 : 100;
+            
+            gsap.fromTo(item, 
+                {
+                    x: startX,
+                    opacity: 0
+                },
+                {
+                    x: 0,
+                    opacity: 1,
+                    duration: 0.8,
+                    delay: i * 0.3,
+                    scrollTrigger: {
+                        trigger: item,
+                        start: 'top 90%',
+                        toggleActions: 'play none none none'
+                    }
+                }
+            );
+        });
+        
+        // Projects section animation - SIMPLIFIED to prevent conflicts
+        gsap.utils.toArray('#projects .project-item').forEach((item, i) => {
+            const startX = i % 2 === 0 ? -80 : 80;
+            
+            gsap.fromTo(item, 
+                {
+                    x: startX,
+                    y: 50,
+                    opacity: 0
+                },
+                {
+                    x: 0,
+                    y: 0,
+                    opacity: 1,
+                    duration: 0.8,
+                    delay: i * 0.2,
+                    scrollTrigger: {
+                        trigger: item,
+                        start: 'top 85%',
+                        toggleActions: 'play none none none'
+                    }
+                }
+            );
+
+            
+        });
+
+
+        
+        
+        // Menu toggle
+        const menuBtn = document.querySelector('.menu-btn');
+        const navLinks = document.querySelector('.nav-links');
+        
+        menuBtn.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+        });
+        
+        // Close menu when clicking on a link
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                navLinks.classList.remove('active');
+            });
+        });
+        
+        // Contact form handling
+        const contactForm = document.getElementById('contactForm');
+        const formMessage = document.getElementById('formMessage');
+        
+        if (contactForm) {
+            contactForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                
+                const submitBtn = this.querySelector('.submit-btn');
+                const originalText = submitBtn.textContent;
+                
+                // Hide previous messages
+                formMessage.style.display = 'none';
+                
+                // Simulate form submission
+                submitBtn.textContent = 'Sending...';
+                submitBtn.disabled = true;
+                
+                setTimeout(() => {
+                    // Show success message
+                    formMessage.textContent = 'Your message has been sent successfully!';
+                    formMessage.style.backgroundColor = '#4CAF50';
+                    formMessage.style.color = 'white';
+                    formMessage.style.display = 'block';
+                    
+                    // Reset form
+                    this.reset();
+                    
+                    submitBtn.textContent = originalText;
+                    submitBtn.disabled = false;
+                    
+                    // Hide message after 5 seconds
+                    setTimeout(() => {
+                        formMessage.style.display = 'none';
+                    }, 5000);
+                }, 2000);
+            });
+        }
+    });
+</script>
+</body>
+</html>
